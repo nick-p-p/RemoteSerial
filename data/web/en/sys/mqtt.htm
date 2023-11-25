@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Example</title>
+  <link rel="stylesheet" href="/mystyle.css">
+  <script src="https://kit.fontawesome.com/a8b19a0264.js"></script>
+  <script src="/bdscripts.js"></script>
+  <script>
+    window.onload = loadPageData;
+  </script>
+</head>
+
+<body>
+  <div style='text-align:left;display:inline-block;min-width:260px;'>
+    <div id="mqttData" name="mqttData" class="UIsection" UID='15'>
+      <h1>Configure MQTT settings</h1>
+
+      <form onsubmit="event.preventDefault(); return savePageData('mqttData');">
+        Mode:
+        <select id='mode' name='mode'>
+          <option value="0">Inactive</option>
+          <option value="1">Send only</option>
+          <option value="2">Receive only</option>
+          <option value="3">Send and Receive</option>
+        </select>
+        <br>
+        <br>
+        MQTT server:
+        <br>
+        <input type='text' name='server' id='server' maxlength='20'>
+        <br><br>
+        Input topic:
+        <br>
+        <input type='text' name='inputTopic' id='inputTopic' maxlength='60'>
+        <br><br>
+        Output topic:
+        <br>
+        <input type='text' name='outputTopic' id='outputTopic' maxlength='60'>
+        <br><br>
+        <button><i class='fas fa-save'></i> Save</button>
+      </form>
+
+      <br>
+      <div id="confirmation"> </div>
+      <br>
+    </div>
+    <button onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+  </div>
+</body>
+
+</html>

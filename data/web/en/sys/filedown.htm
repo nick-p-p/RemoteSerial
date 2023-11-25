@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <title>Example</title>
+
+  <link rel="stylesheet" href="/mystyle.css">
+
+  <script src="https://kit.fontawesome.com/a8b19a0264.js"></script>
+  <script src="/bdscripts.js"></script>
+  <script>
+    window.onload = loadPageData;
+  </script>
+</head>
+
+<body>
+  <div style='text-align:left;display:inline-block;min-width:260px;'>
+
+    <h1>Web files</h1>
+    <br>
+    <div id="webroot" name="webroot" class="UIsection" UID='307' IDX="/web/">
+        <div id='webrootcontent' name='webrootcontent'></div>
+    </div>
+
+    <div id="weben" name="weben" class="UIsection" UID='307' IDX="/web/en/">
+       <div id='webencontent' name='webencontent'></div>
+    </div>
+
+    <div id="webes" name="webes" class="UIsection" UID='307' IDX="/web/es/">
+       <div id='webescontent' name='webescontent'></div>
+    </div>
+    <br>
+
+    <h1>Data files</h1>
+    <br>
+
+    <div id="data" name="data" class="UIsection" UID='307'  IDX="/">
+      <div id='datacontent' name='datacontent'></div>
+    </div>
+    <br>
+    <br>
+
+
+    <br /><br />
+    <button onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+  </div>
+</body>
+
+</html>

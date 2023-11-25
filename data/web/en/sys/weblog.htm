@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <title>Example</title>
+
+    <link rel="stylesheet" href="/mystyle.css">
+    <script src="https://kit.fontawesome.com/a8b19a0264.js"></script>
+    <script>
+
+        var ws;    // websocket
+        var connected = false;
+
+
+        function connect() {
+            if (!connected) {
+                WebSocketTest();
+            }
+        }
+
+        function stop()
+        {
+            ws.close();
+        }
+
+        function WebSocketTest() {
+
+            if ("WebSocket" in window) {
+
+                var url =  "ws://" + window.location.hostname + "/log";
+                // Let us open a web socket
+                ws = new WebSocket(url);
+
+                ws.onopen = function () {
+                    connected = true;
+                    // Web Socket is connected, send data using send()
+                };
+
+                ws.onmessage = function (evt) {
+                    var leng;
+                    if (evt.data.size === undefined) {
+                        leng = evt.data.length
+                    } else {
+                        leng = evt.data.size
+                    }
+                    console.log("onmessage. size: " + leng + ", content: " + evt.data);
+
+                    var node = document.createElement('li');
+                    node.appendChild(document.createTextNode(evt.data));
+
+                    document.querySelector('ul').appendChild(node);
+
+
+                    // too big
+                    var liList = document.getElementById("loglist").getElementsByTagName("li");
+
+                    var largo = liList.length
+
+                    if (largo > 25)
+                    {
+                        var ulElem = document.getElementById('loglist');
+
+                        ulElem.removeChild(ulElem.childNodes[0])
+                    }
+
+                };
+
+                ws.onclose = function () {
+                    connected = false;
+                    // websocket is closed.
+                };
+            } else {
+
+                // The browser doesn't support WebSocket
+                alert("WebSocket NOT supported by your Browser!");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id='dataurl' name='dataurl' type='hidden' value='/getVersion'>
+    <div style='text-align:left;display:inline-block;min-width:260px;'>
+        <h1>Realtime log</h1>
+
+        <div id="log" >
+        <ul id="loglist">
+            <li>System Log</li>
+        </ul>
+    </div>
+        <table width="100%">
+
+            <tr>
+                <td>
+                    <button onclick="connect();"><i class="fas fa-play"></i> Start</button>
+                </td>
+                <td>
+                    <button onclick="stop();"><i class="fas fa-stop"></i> Stop</button>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <button onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <title>Example</title>
+
+    <link rel="stylesheet" href="/mystyle.css">
+
+    <script src="https://kit.fontawesome.com/a8b19a0264.js"></script>
+    <script src="/bdscripts.js"></script>
+    <script>
+      window.onload = loadPageData;
+    </script>
+
+</head>
+
+<body>
+    <div style='text-align:left;display:inline-block;min-width:260px;'>
+        <div id="logDiv" name="logDiv" class="UIsection" UID='301'>
+            <h1>System Log</h1>
+            <br />
+            <div id='syslog'></div>
+            <br>
+            <form onsubmit="event.preventDefault(); return savePageData('logDiv');">
+                <button><i class="fas fa-trash-alt"></i> Clear</button>
+            </form>
+
+            <br>
+            <div id="confirmation"> </div>
+            <br>
+        </div>
+        <form action="/" method="get">
+            <button><i class="fas fa-home"></i> Home</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

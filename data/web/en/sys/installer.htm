@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Example</title>
+  <link rel="stylesheet" href="/mystyle.css">
+  <script src="https://kit.fontawesome.com/a8b19a0264.js"></script>
+  <script src="/bdscripts.js"></script>
+
+  <script>
+    function restartESP32() {
+      if (confirm('Confirm, restart the system now.')) {
+        return callAndReplaceFields('/page?action=restart&UID=307');
+      }
+      else {
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div style='text-align:left;display:inline-block;min-width:260px;'>
+
+    <h1>Device Settings</h1>
+    <br>
+
+    <button onclick="location.href='/en/sys/files.htm'">
+      <i class="far fa-file"></i> File Management
+    </button>
+    <br>
+    <br />
+
+    <button onclick="location.href='/en/sys/logconfig.htm'"">
+      <i class=" fas fa-scroll"></i> Logging
+    </button>
+    <br>
+    <br>
+    
+    <button onclick="location.href='/en/sys/mqtt.htm'">
+      <i class="fas fa-cog"></i> MQTT settings
+    </button>
+    <br>
+
+    <br>
+    <br>
+
+    <button onclick="location.href='/en/sys/info.htm'">
+      <i class="fas fa-info-circle"></i> ESP info
+    </button>
+    <br>
+
+    <br>
+    <br>
+    <button onclick="location.href='/'"><i class="fas fa-home"></i> Home</button>
+
+    <br><br>
+    <form onsubmit="event.preventDefault(); return restartESP32();">
+      <button><i class="fa fa-refresh"></i> Save & Reboot</button>
+    </form>
+
+  </div>
+</body>
+
+</html>
